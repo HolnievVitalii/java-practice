@@ -64,7 +64,7 @@ public class ThreeThingsFunc {
 
         while (true) {
             Scanner input = new Scanner(in);
-            out.print("Enter the count of numbers that you will input: ");
+            out.println("Enter the count of numbers that you will input: ");
 
 
             if (input.hasNextInt()) {
@@ -82,7 +82,7 @@ public class ThreeThingsFunc {
                         arr.add(input.nextInt());
                     }
                 } catch (InputMismatchException e) { //if we have a wrong symbol at list, then just got notification about it and returning to start of the method
-                    out.println(errMsg());
+                    err.print(errMsg());
                     theThingMethod();
                 }
 
@@ -95,8 +95,10 @@ public class ThreeThingsFunc {
                 out.println("the smallest number - " + min);
                 out.println("the largest number - " + max);
                 out.println("the average of all numbers - " + avg);
-            } else {
-                out.println(errMsg());// if we had a wrong array size or wrong symbol that describe our array
+
+            } else if (!input.hasNextInt()) {
+                out.println("");
+                err.print(errMsg());// if we had a wrong array size or wrong symbol that describe our array
                 theThingMethod();                // size then we'll be see an error message and returning to start of the method
             }
 
@@ -110,7 +112,7 @@ public class ThreeThingsFunc {
      * @return message that tells us we can't use any symbols except integers
      */
     private static String errMsg() {
-        return "please input only numbers (characters, strings or symbols not allowed here!)";
+        return "please input only numbers (characters, strings or symbols not allowed here!) => ";
     }
 }
 
