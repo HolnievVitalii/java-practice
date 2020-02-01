@@ -4,6 +4,9 @@ import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author holnievvitalii@outlook.com
+ */
 public class ThreeThingsFunc {
     /**
      * simple method that output min,max and avg value from initial array of numbers
@@ -64,10 +67,14 @@ public class ThreeThingsFunc {
                 int ARRAY_SIZE = input.nextInt();
 
                 List<Integer> arr = new ArrayList<>();//initializing a list that we will use in future for adding integers inside it
-                System.out.print("Insert array elements: ");
+                System.out.print("Insert array elements" + "("+ ARRAY_SIZE+")");
 
                 try {
+                    int count = 0; // added counter for seeing position of current integer that was input
                     for (int i = 0; i < ARRAY_SIZE; i++) { /*if we had input an integer then we adding it to the our list*/
+                        System.out.println("");
+                        count++;
+                        System.out.print("Input " + count + " number and press ENTER to add a number to array: ");
                         arr.add(input.nextInt());
                     }
 
@@ -92,13 +99,14 @@ public class ThreeThingsFunc {
             }
 
 
-            /**
-             *  an error message
-             * @return message that tells us we can't use any symbols except integers
-             */
+
 
         }
     }
+    /**
+     *  an error message
+     * @return message that tells us we can't use any symbols except integers
+     */
     private static String errMsg () {
         return "please input only numbers (characters, strings or symbols not allowed here!)";
     }
