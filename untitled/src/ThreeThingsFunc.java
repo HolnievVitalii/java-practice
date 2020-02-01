@@ -2,6 +2,7 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static java.lang.System.*;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -17,9 +18,9 @@ public class ThreeThingsFunc {
         int max = Arrays.stream(arr).max().getAsInt();
         int min = Arrays.stream(arr).min().getAsInt();
         int avg = (int) Arrays.stream(arr).average().getAsDouble();
-        System.out.println("the smallest number value - " + min);
-        System.out.println("the largest number value- " + max);
-        System.out.println("the average value of all numbers - " + avg);
+        out.println("the smallest number value - " + min);
+        out.println("the largest number value- " + max);
+        out.println("the average value of all numbers - " + avg);
     }
 
     public static void main(String[] args) {
@@ -58,56 +59,57 @@ public class ThreeThingsFunc {
      * Prove that it is working correctly. Make it so that a novice programmer cannot use it the wrong way, nor that an evil programmer can break it.
      */
     public static void theThingMethod() {
+
+        List<Integer> arr = new ArrayList<>();//initializing a list that we will use in future for adding integers inside it
+
         while (true) {
-            Scanner input = new Scanner(System.in);
-            System.out.print("Enter array length: ");
+            Scanner input = new Scanner(in);
+            out.print("Enter the count of numbers that you will input: ");
 
 
             if (input.hasNextInt()) {
                 int ARRAY_SIZE = input.nextInt();
 
-                List<Integer> arr = new ArrayList<>();//initializing a list that we will use in future for adding integers inside it
-                System.out.print("Insert array elements" + "("+ ARRAY_SIZE+")");
+
+                out.print("Insert elements: " + "(" + ARRAY_SIZE + ")");
 
                 try {
                     int count = 0; // added counter for seeing position of current integer that was input
                     for (int i = 0; i < ARRAY_SIZE; i++) { /*if we had input an integer then we adding it to the our list*/
-                        System.out.println("");
+                        out.println("");
                         count++;
-                        System.out.print("Input " + count + " number and press ENTER to add a number to array: ");
+                        out.print("Input " + count + " element and press ENTER to add it to list: ");
                         arr.add(input.nextInt());
                     }
-
-                } catch (InputMismatchException e) { //if we had a wrong symbol at list, then just returning to start of the method
-                    System.out.println(errMsg());
+                } catch (InputMismatchException e) { //if we have a wrong symbol at list, then just got notification about it and returning to start of the method
+                    out.println(errMsg());
                     theThingMethod();
                 }
 
-
-                System.out.print("Inserted array elements:");
-                System.out.println(arr);
+                out.print("Inserted array elements:");
+                out.println(arr);
                 int min = Collections.min(arr);
                 int max = Collections.max(arr);
                 OptionalDouble avg = arr.stream().mapToInt(e -> e).average();
 
-                System.out.println("the smallest number - " + min);
-                System.out.println("the largest number - " + max);
-                System.out.println("the average of all numbers - " + avg);
+                out.println("the smallest number - " + min);
+                out.println("the largest number - " + max);
+                out.println("the average of all numbers - " + avg);
             } else {
-                System.out.println(errMsg());// if we had a wrong array size or wrong symbol that describe our array
+                out.println(errMsg());// if we had a wrong array size or wrong symbol that describe our array
                 theThingMethod();                // size then we'll be see an error message and returning to start of the method
             }
 
 
-
-
         }
     }
+
     /**
-     *  an error message
+     * an error message
+     *
      * @return message that tells us we can't use any symbols except integers
      */
-    private static String errMsg () {
+    private static String errMsg() {
         return "please input only numbers (characters, strings or symbols not allowed here!)";
     }
 }
