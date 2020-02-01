@@ -64,7 +64,7 @@ public class ThreeThingsFunc {
 
         while (true) {
             Scanner input = new Scanner(in);
-            out.println("Enter the count of numbers that you will input: ");
+            out.print("Enter the count of numbers that you will input: ");
 
 
             if (input.hasNextInt()) {
